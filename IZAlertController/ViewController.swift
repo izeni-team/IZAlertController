@@ -1,25 +1,44 @@
 //
-//  ViewController.swift
+//  viewController.swift
 //  IZAlertController
 //
-//  Created by Taylor Allred on 8/16/16.
+//  Created by Taylor Allred on 8/29/16.
 //  Copyright © 2016 Izeni. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+class IZAlertActionClass: IZAlertAction {
+    var title: String?
+    var callback: (() -> ())?
+    required init(title: String?, callback: (() -> ())?) {
+        self.title = title
+        self.callback = callback
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
+    
 }
 
+class ViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        let view = IZAlertViewController<IZAlertActionClass>(title: "TEST", message: "THIS IS A MESSAGE!!")
+        
+        view.addAction(IZAlertActionClass(title: "First Button", callback: {
+            print("FIRST BUTTON PRESSED!!")
+        }))
+        view.addAction(IZAlertActionClass(title: "Second Button", callback: {
+            print("SECOND BUTTON PRESSED!!")
+        }))
+        view.addAction(IZAlertActionClass(title: "Third Button", callback: {
+            print("THIRD BUTTON PRESSED!!")
+        }))
+        
+        self.presentViewController(view, animated: true, completion: nil)
+    }
+}
