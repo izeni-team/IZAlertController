@@ -25,20 +25,20 @@ class ViewController: UIViewController {
         
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let view = IZAlertViewController<IZAlertActionClass>(title: "TEST", message: "THIS IS A MESSAGE!!")
         
-        view.addAction(IZAlertActionClass(title: "First Button", callback: {
+        view.addAction(action: IZAlertActionClass(title: "First Button", callback: {
             print("FIRST BUTTON PRESSED!!")
         }))
-        view.addAction(IZAlertActionClass(title: "Second Button", callback: {
+        view.addAction(action: IZAlertActionClass(title: "Second Button", callback: {
             print("SECOND BUTTON PRESSED!!")
         }))
-        view.addAction(IZAlertActionClass(title: "Third Button", callback: {
+        view.addAction(action: IZAlertActionClass(title: "Third Button", callback: {
             print("THIRD BUTTON PRESSED!!")
         }))
         
-        self.presentViewController(view, animated: true, completion: nil)
+        self.present(view, animated: true, completion: nil)
     }
 }
